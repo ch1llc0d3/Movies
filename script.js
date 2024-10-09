@@ -15,7 +15,7 @@ async function fetchPopularMovies() {
     try {
         // tu codigo aqui: realiza una solicitud para obtener las películas populares
         // y llama a displayMovies con los resultados
-        const response = await fetch('${apiUrl}/movie/popular?api_key=${apiKey}');
+        const response = await fetch(`${apiUrl}/movie/popular?api_key=${apiKey}`);
         const data = await response.json();
         displayMovies(data.results);
     } catch (error) {
@@ -42,7 +42,7 @@ async function showMovieDetails(movieId) {
     try {
         // tu codigo aqui: realiza una solicitud para obtener los detalles de la película
         // y actualiza el contenedor de detalles con la información de la película
-        const response = await fetch('${apiUrl}/search/movie?api_key=${apiKey}&query=${query}');
+        const response = await fetch(`${apiUrl}/search/movie?api_key=${apiKey}&query=${query}`);
         const data = await response.json();
         displayMovies(data.results);
     } catch (error) {
@@ -57,7 +57,7 @@ searchButton.addEventListener('click', async () => {
         try {
             // tu codigo aqui: realiza una solicitud para buscar películas
             // y llama a displayMovies con los resultados de la búsqueda
-            const response = await fetch('${apiUrl}/search/movie?api_key=${apiKey}&query=${query}');
+            const response = await fetch(`${apiUrl}/search/movie?api_key=${apiKey}&query=${query}`);
             const data = await response.json();
             displayMovies(data.results);
         } catch (error) {
