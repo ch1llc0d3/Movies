@@ -42,6 +42,9 @@ async function showMovieDetails(movieId) {
     try {
         // tu codigo aqui: realiza una solicitud para obtener los detalles de la película
         // y actualiza el contenedor de detalles con la información de la película
+        const response = await fetch('${apiUrl}/search/movie?api_key=${apiKey}&query=${query}');
+        const data = await response.json();
+        displayMovies(data.results);
     } catch (error) {
         console.error('Error fetching movie details:', error);
     }
