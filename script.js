@@ -41,10 +41,19 @@ function displayMovies(movies) {
 async function showMovieDetails(movieId) {
     try {
         // tu codigo aqui: realiza una solicitud para obtener los detalles de la película
-        // y actualiza el contenedor de detalles con la información de la película
-        const response = await fetch(`${apiUrl}/search/movie?api_key=${apiKey}&query=${query}`);
+        const response = await fetch(`${apiUrl}/movie/${movieId}?api_key=${apiKey}`);
         const data = await response.json();
-        displayMovies(data.results);
+
+        // y actualiza el contenedor de detalles con la información de la película
+
+        detailsContainer.innerHTML = `
+            <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title}">
+            <h3>${data.title}</h3>
+            <p>${data.overview}</p>
+        
+        `;
+        movieDetails.classList.remove('hidden');
+        selectedMovieId = movieId;
     } catch (error) {
         console.error('Error fetching movie details:', error);
     }
