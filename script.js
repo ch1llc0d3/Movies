@@ -15,6 +15,9 @@ async function fetchPopularMovies() {
     try {
         // tu codigo aqui: realiza una solicitud para obtener las películas populares
         // y llama a displayMovies con los resultados
+        const response = await fetch('${apiUrl}/movie/popular?api_key=${apiKey}');
+        const data = await response.json();
+        displayMovies(data.results);
     } catch (error) {
         console.error('Error fetching popular movies:', error);
     }
