@@ -57,6 +57,9 @@ searchButton.addEventListener('click', async () => {
         try {
             // tu codigo aqui: realiza una solicitud para buscar películas
             // y llama a displayMovies con los resultados de la búsqueda
+            const response = await fetch();
+            const data = await response.json();
+            displayMovies(data.results);
         } catch (error) {
             console.error('Error searching movies:', error);
         }
